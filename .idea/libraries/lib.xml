@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-pool-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ojdbc8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-dbcp-1.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mailapi-1.4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/java-jwt-3.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.15.mod.v1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-httpclient-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/tbv1.2 .jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ttjdbc7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/tbv_jaxclient1.0 .jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-configuration2-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-media-multipart.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/smtp-1.4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-beanutils-1.8.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mimepull-1.9.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lombok-1.18.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.9.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

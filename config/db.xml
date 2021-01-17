@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<properties>
+	<entries>
+		<db>
+			<datasource>
+				<cache>
+					<InitialLimit>2</InitialLimit>
+					<MaxLimit>25</MaxLimit>
+					<XYZ>&lt;See oracle connection cache properties for more&gt;</XYZ>
+					<MaxStatementsLimit>20</MaxStatementsLimit>
+					<InactivityTimeout>300</InactivityTimeout>
+					<ValidateConnection>true</ValidateConnection>
+				</cache>
+				<connection>
+					<defaultBatchValue>-1</defaultBatchValue>
+					<defaultRowPrefetch>-1</defaultRowPrefetch>
+					<autoCommit>false</autoCommit>
+					<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+					<user>MUSIC_APPLICATION_SERVER</user>
+					<password>123</password>
+				</connection>
+				<fastConnectionFailoverEnabled>false</fastConnectionFailoverEnabled>
+				<statement_cached>false</statement_cached>
+				<connection_cached>true</connection_cached>
+			</datasource>
+			<driver>oracle.jdbc.OracleDriver</driver>
+			<datasource>BasicDataSource</datasource>
+		</db>
+	</entries>
+	<comment>DBConnector Configurations</comment>
+</properties>
+
