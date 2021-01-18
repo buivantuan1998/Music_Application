@@ -24,7 +24,7 @@
 				<connection_cached>true</connection_cached>
 			</datasource>
 			<driver>oracle.jdbc.OracleDriver</driver>
-			<datasource>BasicDataSource</datasource>
+			<datasource>oracle.jdbc.pool.OracleDataSource</datasource>
 		</db>
 	</entries>
 	<comment>DBConnector Configurations</comment>

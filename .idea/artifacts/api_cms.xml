@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="api_cms">
+    <output-path>$PROJECT_DIR$/out/artifacts/api_cms</output-path>
+    <root id="root">
+      <element id="archive" name="api_cms.jar">
+        <element id="module-output" name="api_cms" />
+      </element>
+    </root>
+  </artifact>
+</component>
