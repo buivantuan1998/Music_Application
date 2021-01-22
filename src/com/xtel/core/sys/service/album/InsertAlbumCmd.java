@@ -23,9 +23,4 @@ public class InsertAlbumCmd extends AbsBodyRequestCmd {
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage(), dbCmd.getAlbum_id());
     }
-
-    @Override
-    protected boolean isValidToken() {
-        return true;
-    }
 }

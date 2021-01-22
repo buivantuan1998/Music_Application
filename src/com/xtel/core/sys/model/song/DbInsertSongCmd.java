@@ -1,53 +1,47 @@
 package com.xtel.core.sys.model.song;
-
+import com.xtel.core.dto.request.song.InsertSongRequest;
 import com.xtel.core.sys.model.CallableStatementCmd;
+import com.xtel.core.sys.model.MultiCallableStatementCmd;
 
+import java.sql.CallableStatement;
+import java.sql.SQLException;
 import java.sql.Types;
 
-public class DbInsertSongCmd extends CallableStatementCmd {
-    private String song_name;
-    private String url;
-    private Double time;
-    private String singer_name;
-    private String musician_name;
-    private Integer category_id;
-    private String create_by;
+public class DbInsertSongCmd extends MultiCallableStatementCmd {
+    private InsertSongRequest request;
     private Integer song_id;
 
-    public DbInsertSongCmd(String transid, String channel, String song_name, String url, Double time, String singer_name,
-                           String musician_name, Integer category_id, String create_by) {
+    public DbInsertSongCmd(String transid, String channel, InsertSongRequest request) {
         super(transid, channel);
-        this.song_name = song_name;
-        this.url = url;
-        this.time = time;
-        this.singer_name = singer_name;
-        this.musician_name = musician_name;
-        this.category_id = category_id;
-        this.create_by = create_by;
+        this.request = request;
     }
 
     @Override
-    protected void getResult() throws Exception {
-        song_id = cst.getInt(10);
-    }
+    protected void execute() throws Exception {
+        executeProcedure("PKG_SONG.insert_data", 11, new Procedure() {
+            @Override
+            public void setProcedure(CallableStatement cst) throws SQLException {
+                int i = 1;
+                register(cst, i++, Types.INTEGER);
+                register(cst, i++, Types.VARCHAR);
+                setString(cst, i++, request.getSong_name());
+                setString(cst, i++, request.getUrl());
+                setTimestamp(cst, i++, request.getRelase_time());
+                setInt(cst, i++, request.getTime());
+                setString(cst, i++, request.getSinger_name());
+                setString(cst, i++, request.getMusician_name());
+                setInt(cst, i++, request.getCategory_id());
+                setString(cst, i++, request.getCreate_by());
+                register(cst, i++, Types.INTEGER);
+            }
 
-    @Override
-    protected void setSqlCommand() throws Exception {
-        setProc("PKG_SONG.insert_song", 10);
-    }
-
-    @Override
-    protected void setSqlParameter() throws Exception {
-        register(Types.INTEGER);
-        register(Types.VARCHAR);
-        setString(song_name);
-        setString(url);
-        setDouble(time);
-        setString(singer_name);
-        setString(musician_name);
-        setInt(category_id);
-        setString(create_by);
-        register(Types.INTEGER);
+            @Override
+            public void getOutput(CallableStatement cst) throws Exception {
+                code = cst.getInt(1);
+                message = cst.getString(2);
+                song_id = cst.getInt(11);
+            }
+        });
     }
 
     public Integer getSong_id() {

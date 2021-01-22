@@ -1,6 +1,8 @@
 package com.xtel.core.sys.model.song;
 
-import com.xtel.core.sys.model.CallableStatementCmd;;import java.sql.Types;
+import com.xtel.core.sys.model.CallableStatementCmd;
+
+import java.sql.Types;
 
 public class DbDeleteSongCmd extends CallableStatementCmd {
     private Integer song_id;

@@ -23,9 +23,4 @@ public class DeleteSongCmd extends AbsBodyRequestCmd {
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage());
     }
-
-    @Override
-    protected boolean isValidToken() {
-        return  true;
-    }
 }

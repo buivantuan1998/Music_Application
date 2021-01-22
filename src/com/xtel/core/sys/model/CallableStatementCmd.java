@@ -2,11 +2,12 @@ package com.xtel.core.sys.model;
 
 import com.nvt.xpersistence.processor.ColumnProcessor;
 import com.tbv.utils.db.cmd.DbPagingCmd;
+import com.xtel.core.sys.model.Procedure;
 
 import java.lang.reflect.Field;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -35,29 +36,39 @@ public abstract class CallableStatementCmd extends DbPagingCmd {
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
 
+            Field[] fields = clazz.getDeclaredFields();
             while (rs.next()) {
                 T t = clazz.newInstance();
                 for (int i = 0; i < columnCount; i++) {
-                    String columnName = metaData.getColumnName(i + 1).trim();
-                    Field[] fields = clazz.getDeclaredFields();
-                    Field field = null;
-                    for(Field f : fields){
-                        String fieldName = ColumnProcessor.getColumnName(f);
-                        if(fieldName != null){
-                            if(fieldName.equals(columnName)){
-                                field = f;
-                            }
-                        }
-                    }
+                    String columnName = metaData.getColumnLabel(i + 1).trim();
+                    Field field = Arrays.stream(fields)
+                            .filter(f -> ColumnProcessor.getColumnName(f) != null && ColumnProcessor.getColumnName(f).toUpperCase().equals(columnName.toUpperCase()))
+                            .findFirst().orElse(null);
 
                     if(field != null){
                         boolean isAccessible = field.isAccessible();
                         field.setAccessible(true);
-                        field.set(t, field.getType().cast(rs.getObject(columnName)));
+                        final Class<?> fieldType = field.getType();
+                        Object value = null;
+                        if (Integer.class.equals(fieldType)) {
+                            value = rs.getInt(columnName);
+                        } else if (Long.class.equals(fieldType)) {
+                            value = rs.getLong(columnName);
+                        } else if (Float.class.equals(fieldType)) {
+                            value = rs.getFloat(columnName);
+                        } else if (String.class.equals(fieldType)) {
+                            value = rs.getString(columnName);
+                        } else if (Double.class.equals(fieldType)) {
+                            value = rs.getDouble(columnName);
+                        } else if (Timestamp.class.equals(fieldType)) {
+                            value = rs.getTimestamp(columnName);
+                        } else {
+                            value = rs.getObject(columnName);
+                        }
+                        field.set(t, value);
                         field.setAccessible(isAccessible);
                     }
                 }
-
                 list.add(t);
             }
 
@@ -94,5 +105,19 @@ public abstract class CallableStatementCmd extends DbPagingCmd {
 
     protected void setProc(Procedure proc){
         super.setProc(proc.getName(), proc.getNumberParam());
+    }
+
+    protected void setFloat(Float v) throws SQLException{
+        if(v == null){
+            cst.setNull(idx++, Types.FLOAT);
+        }
+        else{
+            cst.setFloat(idx++, v);
+        }
+        logger.debug(String.format("transid: %s, idx: %s, obj: %s",transid, idx, v));
+    }
+
+    protected boolean hasMoreResultSet() throws SQLException {
+        return cst.getMoreResults();
     }
 }

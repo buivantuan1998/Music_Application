@@ -17,7 +17,7 @@ public class DbGetDetailSongCmd extends CallableStatementCmd {
 
     @Override
     protected void getResult() throws Exception {
-        data = getSingle(Song.class);
+        data = getSingle(4, Song.class);
     }
 
     @Override
@@ -29,8 +29,8 @@ public class DbGetDetailSongCmd extends CallableStatementCmd {
     protected void setSqlParameter() throws Exception {
         register(Types.INTEGER);
         register(Types.VARCHAR);
-        register(OracleTypes.CURSOR);
         setInt(song_id);
+        register(OracleTypes.CURSOR);
     }
 
     public Song getData() {

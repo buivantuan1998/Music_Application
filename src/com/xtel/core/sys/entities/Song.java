@@ -22,7 +22,7 @@ public class Song {
     @Column(name = "RELASE_TIME")
     private Timestamp relase_time;
     @Column(name = "TIME")
-    private Double time;
+    private Long time;
     @Column(name = "SINGER_NAME")
     private String singer_name;
     @Column(name = "MUSICIAN_NAME")
@@ -30,15 +30,21 @@ public class Song {
     @Column(name = "CATEGORY_ID")
     private Long category_id;
     @Column(name = "CREATE_TIME")
-    @SkipUpdatable
     private Timestamp create_time;
     @Column(name = "CREATE_BY")
     private String create_by;
     @Column(name = "UPDATE_TIME")
-    @SkipInsertable
     private Timestamp update_time;
     @Column(name = "UPDATE_BY")
     private String update_by;
     @Column(name = "STATUS")
     private Long status;
+    @Column(name = "PLAY_LIST_ID")
+    private Long play_list_id;
+    @Column(name = "CUSTOMER_ID")
+    private Long customer_id;
+    @Column(name = "ALBUM_ID")
+    private Long album_id;
+    @Column(name = "IS_DEFAULT")
+    private Long is_default;
 }

@@ -25,9 +25,4 @@ public class GetListAlbumCmd extends AbsQueryParamRequestCmd {
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage(), dbCmd.getData());
     }
-
-    @Override
-    protected boolean isValidToken() {
-        return true;
-    }
 }

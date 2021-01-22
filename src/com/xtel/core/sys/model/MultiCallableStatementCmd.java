@@ -163,6 +163,16 @@ public abstract class MultiCallableStatementCmd extends DbCommand {
         logger.debug(String.format("transid: %s, IN[%s] = %s", transid, idx, v));
     }
 
+    protected void setDate(CallableStatement cst, int idx, Date v) throws SQLException{
+        if(v == null){
+            cst.setNull(idx, Types.DATE);
+        }
+        else{
+            cst.setDate(idx, v);
+        }
+        logger.debug(String.format("transid: %s, IN[%s] = %s", transid, idx, v));
+    }
+
     protected void register(CallableStatement cst, int idx, int type) throws SQLException{
         cst.registerOutParameter(idx, type);
         logger.debug(String.format("transid: %s, OUT[%s] = %s", transid, idx, type));

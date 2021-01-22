@@ -1,12 +1,8 @@
 package com.xtel.core.sys.controller;
 
+import com.xtel.core.dto.request.album.DeleteAlbumRequest;
 import com.xtel.core.dto.request.album.InsertAlbumRequest;
-import com.xtel.core.dto.request.song.DeleteSongRequest;
-import com.xtel.core.sys.service.album.GetDetailAlbumCmd;
-import com.xtel.core.sys.service.album.GetListAlbumCmd;
-import com.xtel.core.sys.service.album.GetListDataCmd;
-import com.xtel.core.sys.service.album.InsertAlbumCmd;
-import com.xtel.core.sys.service.song.DeleteSongCmd;
+import com.xtel.core.sys.service.album.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -54,8 +50,8 @@ public class AlbumController extends BaseController{
 
     @POST
     @Path("delete")
-    public Response deleteSong(String body) {
-        DeleteSongCmd cmd = new DeleteSongCmd(httpServletRequest, body, DeleteSongRequest.class);
+    public Response deleteAlbum(String body) {
+        DeleteAlbumCmd cmd = new DeleteAlbumCmd(httpServletRequest, body, DeleteAlbumRequest.class);
         cmd.execute();
         return cmd.getResponse();
     }
