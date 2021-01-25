@@ -6,6 +6,6 @@ import lombok.ToString;
 @Data
 @ToString
 public class DeleteAlbumRequest {
-    private Integer customer_id;
+    private String phone_number;
     private Integer album_id;
 }

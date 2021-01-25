@@ -9,7 +9,7 @@ public class GetListConfigScheduleCmd extends AbsQueryParamRequestCmd {
     private Integer customer_id;
     private String phone_number;
 
-    public GetListConfigScheduleCmd(HttpServletRequest httpServletRequest, Integer customer_id, String phone_number) {
+    public GetListConfigScheduleCmd(HttpServletRequest httpServletRequest, String phone_number) {
         super(httpServletRequest);
         this.customer_id = customer_id;
         this.phone_number = phone_number;
@@ -17,7 +17,7 @@ public class GetListConfigScheduleCmd extends AbsQueryParamRequestCmd {
 
     @Override
     protected void executeCmd() throws Exception {
-        DbGetListConfigScheduleCmd dbCmd = new DbGetListConfigScheduleCmd(transid, channel, customer_id, phone_number);
+        DbGetListConfigScheduleCmd dbCmd = new DbGetListConfigScheduleCmd(transid, channel, phone_number);
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage(), dbCmd.getData());
     }

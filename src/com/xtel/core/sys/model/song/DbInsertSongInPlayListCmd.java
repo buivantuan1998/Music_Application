@@ -23,7 +23,7 @@ public class DbInsertSongInPlayListCmd extends MultiCallableStatementCmd {
                 register(cst, i++, Types.INTEGER);
                 register(cst, i++, Types.VARCHAR);
                 setInt(cst, i++, request.getPlay_list_id());
-                setInt(cst, i++, request.getSong_id());
+                setString(cst, i++, request.getCode_song());
             }
 
             @Override

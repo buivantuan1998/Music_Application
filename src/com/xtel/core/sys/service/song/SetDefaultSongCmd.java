@@ -15,10 +15,10 @@ public class SetDefaultSongCmd extends AbsBodyRequestCmd {
     @Override
     protected void executeCmd() throws Exception {
         request = getObject(SetDefaultSongRequest.class);
-        Integer customer_id = request.getCustomer_id();
-        Integer song_id = request.getSong_id();
+        String code_song = request.getCode_song();
+        String phone_number = request.getPhone_number();
 
-        DbSetDefaultSongCmd dbCmd = new DbSetDefaultSongCmd(transid, channel, customer_id, song_id);
+        DbSetDefaultSongCmd dbCmd = new DbSetDefaultSongCmd(transid, channel, code_song, phone_number);
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage());
     }

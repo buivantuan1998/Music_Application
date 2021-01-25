@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 public class LoginAccountRequest {
     @NotNullOrEmpty
-    private String full_name;
+    private String phone_number;
     @NotNullOrEmpty
     private String password;
 

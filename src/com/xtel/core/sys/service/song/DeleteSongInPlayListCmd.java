@@ -1,7 +1,6 @@
 package com.xtel.core.sys.service.song;
 
 import com.xtel.core.dto.request.song.DeleteSongInPlayListRequest;
-import com.xtel.core.dto.request.song.DeleteSongRequest;
 import com.xtel.core.sys.model.song.DbDeleteSongInPlayListCmd;
 import com.xtel.core.sys.service.AbsBodyRequestCmd;
 

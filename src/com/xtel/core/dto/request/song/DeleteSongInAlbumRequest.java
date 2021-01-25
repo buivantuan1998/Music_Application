@@ -7,5 +7,5 @@ import lombok.ToString;
 @ToString
 public class DeleteSongInAlbumRequest {
     private Integer album_id;
-    private Integer song_id;
+    private String code_song;
 }

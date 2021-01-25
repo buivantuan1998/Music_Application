@@ -39,12 +39,6 @@ public class Song {
     private String update_by;
     @Column(name = "STATUS")
     private Long status;
-    @Column(name = "PLAY_LIST_ID")
-    private Long play_list_id;
-    @Column(name = "CUSTOMER_ID")
-    private Long customer_id;
-    @Column(name = "ALBUM_ID")
-    private Long album_id;
-    @Column(name = "IS_DEFAULT")
-    private Long is_default;
+    @Column(name = "CODE")
+    private String code;
 }

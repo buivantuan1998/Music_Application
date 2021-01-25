@@ -22,7 +22,7 @@ public class DbUpdateStatusConfigScheduleCmd extends MultiCallableStatementCmd {
                 int i = 1;
                 register(cst, i++, Types.INTEGER);
                 register(cst, i++, Types.VARCHAR);
-                setInt(cst, i++, request.getCustomer_id());
+                setString(cst, i++, request.getPhone_number());
                 setInt(cst, i++, request.getConfig_schedule_id());
                 setInt(cst, i++, request.getStatus());
             }

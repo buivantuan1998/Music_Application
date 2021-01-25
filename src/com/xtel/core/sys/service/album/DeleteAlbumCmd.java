@@ -15,10 +15,10 @@ public class DeleteAlbumCmd extends AbsBodyRequestCmd {
     @Override
     protected void executeCmd() throws Exception {
         request = getObject(DeleteAlbumRequest.class);
-        Integer customer_id = request.getCustomer_id();
+        String phone_number = request.getPhone_number();
         Integer album_id = request.getAlbum_id();
 
-        DbDeleteAlbumCmd dbCmd = new DbDeleteAlbumCmd(transid, channel, customer_id, album_id);
+        DbDeleteAlbumCmd dbCmd = new DbDeleteAlbumCmd(transid, channel, phone_number, album_id);
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage());
     }

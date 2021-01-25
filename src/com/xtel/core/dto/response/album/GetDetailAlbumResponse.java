@@ -11,5 +11,5 @@ import java.util.List;
 @ToString
 public class GetDetailAlbumResponse {
     private AlbumResponse albumResponse;
-    private List<SongResponse> songResponseList;
+    private List<GetListSongInAlbum> songResponseList;
 }

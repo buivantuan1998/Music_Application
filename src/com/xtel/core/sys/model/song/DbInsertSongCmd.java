@@ -18,7 +18,7 @@ public class DbInsertSongCmd extends MultiCallableStatementCmd {
 
     @Override
     protected void execute() throws Exception {
-        executeProcedure("PKG_SONG.insert_data", 11, new Procedure() {
+        executeProcedure("PKG_SONG.insert_data", 12, new Procedure() {
             @Override
             public void setProcedure(CallableStatement cst) throws SQLException {
                 int i = 1;
@@ -33,6 +33,7 @@ public class DbInsertSongCmd extends MultiCallableStatementCmd {
                 setInt(cst, i++, request.getCategory_id());
                 setString(cst, i++, request.getCreate_by());
                 register(cst, i++, Types.INTEGER);
+                setString(cst, i++, request.getCode_song());
             }
 
             @Override

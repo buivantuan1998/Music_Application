@@ -7,5 +7,5 @@ import lombok.ToString;
 @ToString
 public class InsertSongInAlbumRequest {
     private Integer album_id;
-    private Integer song_id;
+    private String code_song;
 }

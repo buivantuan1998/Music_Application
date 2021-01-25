@@ -35,8 +35,8 @@ public class SongController extends BaseController{
 
     @GET
     @Path("detail")
-    public Response getDetail(@QueryParam("song_id") Integer song_id) {
-        GetDetailSongCmd cmd = new GetDetailSongCmd(httpServletRequest, song_id);
+    public Response getDetail(@QueryParam("code_song") String code_song) {
+        GetDetailSongCmd cmd = new GetDetailSongCmd(httpServletRequest, code_song);
         cmd.execute();
         return cmd.getResponse();
     }
@@ -59,8 +59,8 @@ public class SongController extends BaseController{
 
     @GET
     @Path("get_song_default")
-    public Response getSongDefault(@QueryParam("customer_id") Integer customer_id) {
-        GetSongDefaultCmd cmd = new GetSongDefaultCmd(httpServletRequest, customer_id);
+    public Response getSongDefault(@QueryParam("phone_number") String phone_number) {
+        GetSongDefaultCmd cmd = new GetSongDefaultCmd(httpServletRequest, phone_number);
         cmd.execute();
         return cmd.getResponse();
     }

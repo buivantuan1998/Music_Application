@@ -6,15 +6,15 @@ import com.xtel.core.sys.service.AbsQueryParamRequestCmd;
 import javax.servlet.http.HttpServletRequest;
 
 public class GetSongDefaultCmd extends AbsQueryParamRequestCmd {
-    private Integer customer_id;
-    public GetSongDefaultCmd(HttpServletRequest httpServletRequest, Integer customer_id) {
+    private String phone_number;
+    public GetSongDefaultCmd(HttpServletRequest httpServletRequest, String phone_number) {
         super(httpServletRequest);
-        this.customer_id = customer_id;
+        this.phone_number = phone_number;
     }
 
     @Override
     protected void executeCmd() throws Exception {
-        DbGetSongDefaultCmd dbCmd = new DbGetSongDefaultCmd(transid, channel, customer_id);
+        DbGetSongDefaultCmd dbCmd = new DbGetSongDefaultCmd(transid, channel, phone_number);
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage(), dbCmd.getData());
     }

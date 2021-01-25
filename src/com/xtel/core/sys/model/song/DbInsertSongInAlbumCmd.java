@@ -24,7 +24,7 @@ public class DbInsertSongInAlbumCmd extends MultiCallableStatementCmd {
                 register(cst, i++, Types.INTEGER);
                 register(cst, i++, Types.VARCHAR);
                 setInt(cst, i++, request.getAlbum_id());
-                setInt(cst, i++, request.getSong_id());
+                setString(cst, i++, request.getCode_song());
             }
 
             @Override

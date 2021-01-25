@@ -19,10 +19,10 @@ public class LoginAccountCmd extends AbsBodyRequestCmd {
     @Override
     protected void executeCmd() throws Exception {
         request = getObject(LoginAccountRequest.class);
-        String full_name = request.getFull_name();
+        String phone_number = request.getPhone_number();
         String password = StringUtils.encodeMD5(request.getPassword());
 
-        DbLoginAccountCmd dbCmd = new DbLoginAccountCmd(transid, channel, full_name, password);
+        DbLoginAccountCmd dbCmd = new DbLoginAccountCmd(transid, channel, phone_number, password);
         executeDbCmd(dbCmd);
 
         if(dbCmd.getCode() != 0){

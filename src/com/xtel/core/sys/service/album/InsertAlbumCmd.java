@@ -16,10 +16,9 @@ public class InsertAlbumCmd extends AbsBodyRequestCmd {
     protected void executeCmd() throws Exception {
         request = getObject(InsertAlbumRequest.class);
         Integer customer_id = request.getCustomer_id();
-        String create_by = request.getCreate_by();
         String album_name = request.getAlbum_name();
 
-        DbInsertAlbumCmd dbCmd = new DbInsertAlbumCmd(transid, channel, customer_id, create_by, album_name);
+        DbInsertAlbumCmd dbCmd = new DbInsertAlbumCmd(transid, channel, customer_id, getEmailFromToken(), album_name);
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage(), dbCmd.getAlbum_id());
     }

@@ -25,7 +25,7 @@ public class DbGetListAlbumCmd extends CallableStatementCmd {
 
     @Override
     protected void getResult() throws Exception {
-        data = getList(AlbumResponse.class);
+        data = getList(11, AlbumResponse.class);
     }
 
     @Override

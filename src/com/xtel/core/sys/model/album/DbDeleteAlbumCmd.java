@@ -5,12 +5,12 @@ import com.xtel.core.sys.model.CallableStatementCmd;
 import java.sql.Types;
 
 public class DbDeleteAlbumCmd extends CallableStatementCmd {
-    private Integer customer_id;
+    private String phone_number;
     private Integer album_id;
 
-    public DbDeleteAlbumCmd(String transid, String channel, Integer customer_id, Integer album_id) {
+    public DbDeleteAlbumCmd(String transid, String channel, String phone_number, Integer album_id) {
         super(transid, channel);
-        this.customer_id = customer_id;
+        this.phone_number = phone_number;
         this.album_id = album_id;
     }
 
@@ -28,7 +28,7 @@ public class DbDeleteAlbumCmd extends CallableStatementCmd {
     protected void setSqlParameter() throws Exception {
         register(Types.INTEGER);
         register(Types.VARCHAR);
-        setInt(customer_id);
+        setString(phone_number);
         setInt(album_id);
     }
 }

@@ -1,7 +1,6 @@
 package com.xtel.core.sys.service.song;
 
 import com.xtel.core.dto.request.song.InsertSongInAlbumRequest;
-import com.xtel.core.sys.model.song.DbDeleteSongInAlbumCmd;
 import com.xtel.core.sys.model.song.DbInsertSongInAlbumCmd;
 import com.xtel.core.sys.service.AbsBodyRequestCmd;
 

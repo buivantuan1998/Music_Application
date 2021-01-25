@@ -40,19 +40,17 @@ public class ConfigScheduleController extends BaseController{
 
     @GET
     @Path("list")
-    public Response getListConfigSchedule(@QueryParam("customer_id") Integer customer_id,
-                                          @QueryParam("phone_number") String phone_number) {
-        GetListConfigScheduleCmd cmd = new GetListConfigScheduleCmd(httpServletRequest, customer_id, phone_number);
+    public Response getListConfigSchedule(@QueryParam("phone_number") String phone_number) {
+        GetListConfigScheduleCmd cmd = new GetListConfigScheduleCmd(httpServletRequest, phone_number);
         cmd.execute();
         return cmd.getResponse();
     }
 
     @GET
     @Path("detail")
-    public Response getDetailConfigSchedule(@QueryParam("customer_id") Integer customer_id,
-                                            @QueryParam("phone_number") String phone_number,
+    public Response getDetailConfigSchedule(@QueryParam("phone_number") String phone_number,
                                             @QueryParam("config_schedule_id") Integer config_schedule_id) {
-        GetDetailConfigScheduleCmd cmd = new GetDetailConfigScheduleCmd(httpServletRequest, customer_id, phone_number, config_schedule_id);
+        GetDetailConfigScheduleCmd cmd = new GetDetailConfigScheduleCmd(httpServletRequest, phone_number, config_schedule_id);
         cmd.execute();
         return cmd.getResponse();
     }

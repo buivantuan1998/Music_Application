@@ -24,8 +24,8 @@ public class DbDeleteSongInPlayListCmd extends MultiCallableStatementCmd {
                 int i = 1;
                 register(cst, i++, Types.INTEGER);
                 register(cst, i++, Types.VARCHAR);
+                setString(cst, i++, request.getCode_song());
                 setInt(cst, i++, request.getPlay_list_id());
-                setInt(cst, i++, request.getSong_id());
             }
 
             @Override

@@ -16,13 +16,14 @@ public class DbDeleteSongInAlbumCmd extends MultiCallableStatementCmd {
 
     @Override
     protected void execute() throws Exception {
-        executeProcedure("PKG_SONG.delete_song_out_album", 3, new Procedure() {
+        executeProcedure("PKG_SONG.delete_song_out_album", 4, new Procedure() {
             @Override
             public void setProcedure(CallableStatement cst) throws SQLException {
                 int i = 1;
                 register(cst, i++, Types.INTEGER);
                 register(cst, i++, Types.VARCHAR);
-                setInt(cst, i++, request.getSong_id());
+                setString(cst, i++, request.getCode_song());
+                setInt(cst, i++, request.getAlbum_id());
             }
 
             @Override

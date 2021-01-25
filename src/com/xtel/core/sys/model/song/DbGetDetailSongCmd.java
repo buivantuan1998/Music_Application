@@ -7,12 +7,12 @@ import oracle.jdbc.OracleTypes;
 import java.sql.Types;
 
 public class DbGetDetailSongCmd extends CallableStatementCmd {
-    private Integer song_id;
+    private String code_song;
     private Song data;
 
-    public DbGetDetailSongCmd(String transid, String channel, Integer song_id) {
+    public DbGetDetailSongCmd(String transid, String channel, String code_song) {
         super(transid, channel);
-        this.song_id = song_id;
+        this.code_song = code_song;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class DbGetDetailSongCmd extends CallableStatementCmd {
     protected void setSqlParameter() throws Exception {
         register(Types.INTEGER);
         register(Types.VARCHAR);
-        setInt(song_id);
+        setString(code_song);
         register(OracleTypes.CURSOR);
     }
 

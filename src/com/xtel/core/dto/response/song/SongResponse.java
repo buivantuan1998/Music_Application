@@ -29,12 +29,6 @@ public class SongResponse {
     private Integer CATEGORY_ID;
     @Column(name = "CATEGORY_NAME")
     private String CATEGORY_NAME;
-    @Column(name = "PLAY_LIST_ID")
-    private Integer PLAY_LIST_ID;
-    @Column(name = "CUSTOMER_ID")
-    private Integer CUSTOMER_ID;
-    @Column(name = "ALBUM_ID")
-    private Integer ALBUM_ID;
     @Column(name = "CREATE_TIME")
     private Timestamp CREATE_TIME;
     @Column(name = "CREATE_BY")
@@ -43,4 +37,6 @@ public class SongResponse {
     private String UPDATE_BY;
     @Column(name = "STATUS")
     private Integer STATUS;
+    @Column(name = "CODE")
+    private String CODE;
 }

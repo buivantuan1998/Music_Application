@@ -9,12 +9,10 @@ import java.sql.Types;
 
 public class DbDeleteConfigScheduleCmd extends MultiCallableStatementCmd {
     private DeleteConfigScheduleRequest request;
-    private Integer customer_id;
 
-    public DbDeleteConfigScheduleCmd(String transid, String channel, DeleteConfigScheduleRequest request, Integer customer_id) {
+    public DbDeleteConfigScheduleCmd(String transid, String channel, DeleteConfigScheduleRequest request) {
         super(transid, channel);
         this.request = request;
-        this.customer_id = customer_id;
     }
 
     @Override
@@ -26,7 +24,7 @@ public class DbDeleteConfigScheduleCmd extends MultiCallableStatementCmd {
                 register(cst, i++, Types.INTEGER);
                 register(cst, i++, Types.VARCHAR);
                 setInt(cst, i++, request.getConfig_schedule_id());
-                setInt(cst, i++, customer_id);
+                setString(cst, i++, request.getPhone_number());
             }
 
             @Override

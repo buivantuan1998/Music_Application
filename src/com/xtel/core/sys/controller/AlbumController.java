@@ -2,6 +2,7 @@ package com.xtel.core.sys.controller;
 
 import com.xtel.core.dto.request.album.DeleteAlbumRequest;
 import com.xtel.core.dto.request.album.InsertAlbumRequest;
+import com.xtel.core.dto.request.album.UpdateAlbumRequest;
 import com.xtel.core.sys.service.album.*;
 
 import javax.ws.rs.GET;
@@ -26,8 +27,8 @@ public class AlbumController extends BaseController{
     @GET
     @Path("detail")
     public Response getDetailAlbum(@QueryParam("album_id") Integer album_id,
-                                   @QueryParam("customer_id") Integer customer_id) {
-        GetDetailAlbumCmd cmd = new GetDetailAlbumCmd(httpServletRequest, album_id, customer_id);
+                                   @QueryParam("phone_number") String phone_number) {
+        GetDetailAlbumCmd cmd = new GetDetailAlbumCmd(httpServletRequest, album_id, phone_number);
         cmd.execute();
         return cmd.getResponse();
     }
@@ -44,6 +45,14 @@ public class AlbumController extends BaseController{
     @Path("insert")
     public Response insertAlbum(String body) {
         InsertAlbumCmd cmd = new InsertAlbumCmd(httpServletRequest, body, InsertAlbumRequest.class);
+        cmd.execute();
+        return cmd.getResponse();
+    }
+
+    @POST
+    @Path("update")
+    public Response updateAlbum(String body) {
+        UpdateAlbumCmd cmd = new UpdateAlbumCmd(httpServletRequest, body, UpdateAlbumRequest.class);
         cmd.execute();
         return cmd.getResponse();
     }

@@ -7,17 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 
 public class GetDetailAlbumCmd extends AbsQueryParamRequestCmd {
     private Integer album_id;
-    private Integer customer_id;
+    private String phone_number;
 
-    public GetDetailAlbumCmd(HttpServletRequest httpServletRequest, Integer album_id, Integer customer_id) {
+    public GetDetailAlbumCmd(HttpServletRequest httpServletRequest, Integer album_id, String phone_number) {
         super(httpServletRequest);
         this.album_id = album_id;
-        this.customer_id = customer_id;
+        this.phone_number = phone_number;
     }
 
     @Override
     protected void executeCmd() throws Exception {
-        DbGetDetailAlbumCmd dbCmd = new DbGetDetailAlbumCmd(transid, channel, album_id, customer_id);
+        DbGetDetailAlbumCmd dbCmd = new DbGetDetailAlbumCmd(transid, channel, album_id, phone_number);
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage(), dbCmd.getData());
     }

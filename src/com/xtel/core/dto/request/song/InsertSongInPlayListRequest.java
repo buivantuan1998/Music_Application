@@ -7,5 +7,5 @@ import lombok.ToString;
 @ToString
 public class InsertSongInPlayListRequest {
     private Integer play_list_id;
-    private Integer song_id;
+    private String code_song;
 }

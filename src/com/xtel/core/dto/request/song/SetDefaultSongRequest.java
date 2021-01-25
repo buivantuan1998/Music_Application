@@ -6,6 +6,6 @@ import lombok.ToString;
 @Data
 @ToString
 public class SetDefaultSongRequest {
-    private Integer customer_id;
-    private Integer song_id;
+    private String code_song;
+    private String phone_number;
 }

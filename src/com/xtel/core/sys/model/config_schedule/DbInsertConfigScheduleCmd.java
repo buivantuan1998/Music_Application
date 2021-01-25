@@ -29,7 +29,7 @@ public class DbInsertConfigScheduleCmd extends MultiCallableStatementCmd {
                 setInt(cst, i++, request.getEnd_hour());
                 setInt(cst, i++, request.getStart_minute());
                 setInt(cst, i++, request.getEnd_minute());
-                setInt(cst, i++, request.getCustomer_id());
+                setString(cst, i++, request.getPhone_number());
                 setInt(cst, i++, request.getStatus());
                 register(cst, i++, Types.INTEGER);
             }

@@ -1,12 +1,10 @@
 package com.xtel.core.sys.controller;
 
+import com.xtel.core.dto.request.customer.DeleteCustomerRequest;
 import com.xtel.core.dto.request.customer.LoginAccountRequest;
 import com.xtel.core.dto.request.customer.RegisterAccountRequest;
 import com.xtel.core.dto.request.customer.UpdateAccountRequest;
-import com.xtel.core.sys.service.customer.GetDetailCustomerCmd;
-import com.xtel.core.sys.service.customer.LoginAccountCmd;
-import com.xtel.core.sys.service.customer.RegisterAccountCmd;
-import com.xtel.core.sys.service.customer.UpdateCustommerCmd;
+import com.xtel.core.sys.service.customer.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -48,5 +46,22 @@ public class CustomerController extends BaseController{
         return cmd.getResponse();
     }
 
+    @GET
+    @Path("list")
+    public Response getListAccount(@QueryParam("page_index") Integer page_index,
+                                   @QueryParam("page_size") Integer page_size,
+                                   @QueryParam("search_name") String search_name,
+                                   @QueryParam("order_by") String order_by) {
+        GetListCustomerCmd cmd = new GetListCustomerCmd(httpServletRequest, page_index, page_size, search_name, order_by);
+        cmd.execute();
+        return cmd.getResponse();
+    }
 
+    @GET
+    @Path("delete")
+    public Response deleteAccount(String body) {
+        DeleteCustomerCmd cmd = new DeleteCustomerCmd(httpServletRequest, body, DeleteCustomerRequest.class);
+        cmd.execute();
+        return cmd.getResponse();
+    }
 }

@@ -12,6 +12,4 @@ import java.util.List;
 public class GetDetailCustomer{
     private CustomerResponse customerResponse;
     private List<ConfigScheduleResponse> configScheduleResponseList;
-    private AlbumResponse albumResponse;
-    private List<PlayListResponse> playListResponseList;
 }

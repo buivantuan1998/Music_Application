@@ -16,7 +16,7 @@ public class DeleteConfigScheduleCmd extends AbsBodyRequestCmd {
     protected void executeCmd() throws Exception {
         request = getObject(DeleteConfigScheduleRequest.class);
 
-        DbDeleteConfigScheduleCmd dbCmd = new DbDeleteConfigScheduleCmd(transid, channel, request, getIdFromToken());
+        DbDeleteConfigScheduleCmd dbCmd = new DbDeleteConfigScheduleCmd(transid, channel, request);
         executeDbCmd(dbCmd);
         setResponse(dbCmd.getCode(), dbCmd.getMessage());
     }

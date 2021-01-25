@@ -17,7 +17,7 @@ public class DbUpdateSongCmd extends MultiCallableStatementCmd {
 
     @Override
     protected void execute() throws Exception {
-        executeProcedure("PKG_SONG.update_data", 11, new Procedure() {
+        executeProcedure("PKG_SONG.update_data", 12, new Procedure() {
             @Override
             public void setProcedure(CallableStatement cst) throws SQLException {
                 int i = 1;
@@ -32,6 +32,7 @@ public class DbUpdateSongCmd extends MultiCallableStatementCmd {
                 setString(cst, i++, request.getMusician_name());
                 setInt(cst, i++, request.getCategory_id());
                 setString(cst, i++, request.getCreate_by());
+                setString(cst, i++, request.getCode_song());
             }
 
             @Override

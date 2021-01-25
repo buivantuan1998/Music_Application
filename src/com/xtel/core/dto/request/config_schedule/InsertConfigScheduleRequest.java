@@ -11,6 +11,6 @@ public class InsertConfigScheduleRequest {
     private Integer end_hour;
     private Integer start_minute;
     private Integer end_minute;
-    private Integer customer_id;
+    private String phone_number;
     private Integer status;
 }
