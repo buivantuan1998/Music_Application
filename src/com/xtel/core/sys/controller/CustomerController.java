@@ -64,4 +64,12 @@ public class CustomerController extends BaseController{
         cmd.execute();
         return cmd.getResponse();
     }
+
+    @GET
+    @Path("list_data")
+    public Response deleteAccount() {
+        GetListAccount cmd = new GetListAccount(httpServletRequest);
+        cmd.execute();
+        return cmd.getResponse();
+    }
 }

@@ -1,10 +1,9 @@
 package com.xtel.core.sys.controller;
 
-import com.xtel.core.dto.request.album.InsertAlbumRequest;
-import com.xtel.core.sys.service.album.GetListDataCmd;
-import com.xtel.core.sys.service.album.InsertAlbumCmd;
-import com.xtel.core.sys.service.play_list.GetDetailPlayListCmd;
-import com.xtel.core.sys.service.play_list.GetListPlayListCmd;
+import com.xtel.core.dto.request.play_list.DeletePlayListRequest;
+import com.xtel.core.dto.request.play_list.InsertPlayListRequest;
+import com.xtel.core.dto.request.play_list.UpdatePlayListRequest;
+import com.xtel.core.sys.service.play_list.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -28,8 +27,8 @@ public class PlayListController extends BaseController {
 
     @GET
     @Path("detail")
-    public Response getList(@QueryParam("play_list_id") Integer play_list_id,
-                            @QueryParam("phone_number") String phone_number) {
+    public Response getDetail(@QueryParam("play_list_id") Integer play_list_id,
+                              @QueryParam("phone_number") String phone_number) {
         GetDetailPlayListCmd cmd = new GetDetailPlayListCmd(httpServletRequest, play_list_id, phone_number);
         cmd.execute();
         return cmd.getResponse();
@@ -37,8 +36,24 @@ public class PlayListController extends BaseController {
 
     @POST
     @Path("insert")
-    public Response insertAlbum(String body) {
-        InsertAlbumCmd cmd = new InsertAlbumCmd(httpServletRequest, body, InsertAlbumRequest.class);
+    public Response insertPlayList(String body) {
+        InsertPlayListCmd cmd = new InsertPlayListCmd(httpServletRequest, body, InsertPlayListRequest.class);
+        cmd.execute();
+        return cmd.getResponse();
+    }
+
+    @POST
+    @Path("update")
+    public Response updatePlayList(String body) {
+        UpdatePlayListCmd cmd = new UpdatePlayListCmd(httpServletRequest, body, UpdatePlayListRequest.class);
+        cmd.execute();
+        return cmd.getResponse();
+    }
+
+    @POST
+    @Path("delete")
+    public Response deletePlayList(String body) {
+        DeletePlayListCmd cmd = new DeletePlayListCmd(httpServletRequest, body, DeletePlayListRequest.class);
         cmd.execute();
         return cmd.getResponse();
     }

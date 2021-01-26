@@ -1,9 +1,6 @@
 package com.xtel.core.sys.controller;
 
-import com.xtel.core.dto.request.config_schedule.DeleteConfigScheduleRequest;
-import com.xtel.core.dto.request.config_schedule.InsertConfigScheduleRequest;
-import com.xtel.core.dto.request.config_schedule.UpdateConfigScheduleRequest;
-import com.xtel.core.dto.request.config_schedule.UpdateStatusConfigScheduleRequest;
+import com.xtel.core.dto.request.config_schedule.*;
 import com.xtel.core.sys.service.config_schedule.*;
 
 import javax.ws.rs.GET;
@@ -63,6 +60,12 @@ public class ConfigScheduleController extends BaseController{
         return cmd.getResponse();
     }
 
-
+    @POST
+    @Path("change_song_default")
+    public Response changeSongDefault(String body) {
+        ChangeSongDefaultCmd cmd = new ChangeSongDefaultCmd(httpServletRequest, body, ChangeSongDefaultRequest.class);
+        cmd.execute();
+        return cmd.getResponse();
+    }
 
 }
