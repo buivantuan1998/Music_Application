@@ -57,4 +57,13 @@ public class PlayListController extends BaseController {
         cmd.execute();
         return cmd.getResponse();
     }
+
+    @GET
+    @Path("song_random")
+    public Response randomSongInPlayList(@QueryParam("phone_number") String phone_number,
+                                         @QueryParam("play_list_id") Integer play_list_id) {
+        GetRandomSongInPlayListCmd cmd = new GetRandomSongInPlayListCmd(httpServletRequest, phone_number, play_list_id);
+        cmd.execute();
+        return cmd.getResponse();
+    }
 }
